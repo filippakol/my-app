@@ -1,0 +1,93 @@
+<div>
+  <div>
+    <h1>
+     Where are you feeling sore today?
+    </h1>
+  </div>
+</div>
+<div>
+  <div>
+    <h2>
+      List of all body parts
+    </h2>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new body part
+    </h2>
+
+    <form action="/insert_body_part" method="post">
+      <div>
+        <label for="body_part_name_box">
+          Body part name
+        </label>
+
+        <input type="text" id="body_part_name_box" name="query_body_part_name">
+      </div>
+
+      <button>
+        Create body part
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Body part name
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_body_parts.each do |a_body_part| %>
+      <tr>
+        <td>
+          <%= a_body_part.id %>
+        </td>
+
+        <td>
+          <%= a_body_part.body_part_name %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_body_part.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_body_part.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/body_parts/<%= a_body_part.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

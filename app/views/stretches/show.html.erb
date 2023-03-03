@@ -1,0 +1,86 @@
+<div>
+  <div>
+    <h1>
+      Stretch #<%= @the_stretch.id %> details
+    </h1>
+
+    <div>
+      <div>
+        <a href="/stretches">
+          Go back
+        </a>
+      </div>
+
+      <div>
+        <a href="/delete_stretch/<%= @the_stretch.id %>">
+          Delete stretch
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Stretch name
+      </dt>
+      <dd>
+        <%= @the_stretch.stretch_name %>
+      </dd>
+
+      <dt>
+        Body part
+      </dt>
+      <dd>
+        <%= @the_stretch.body_part_id %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_stretch.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@the_stretch.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div>
+  <div>
+    <h2>
+      Edit stretch
+    </h2>
+
+    <form action="/modify_stretch/<%= @the_stretch.id %>"  method="post" >
+      <div>
+        <label for="stretch_name_box">
+          Stretch name
+        </label>
+
+        <input type="text" id="stretch_name_box" name="query_stretch_name" value="<%= @the_stretch.stretch_name %>">
+      </div>
+
+      <div>
+        <label for="body_part_id_box">
+          Body part
+        </label>
+
+        <input type="text" id="body_part_id_box" name="query_body_part_id" value="<%= @the_stretch.body_part_id %>">
+      </div>
+
+      <button>
+        Update stretch
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

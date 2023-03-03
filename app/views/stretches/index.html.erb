@@ -1,0 +1,102 @@
+<div>
+  <div>
+    <h1>
+      List of all stretches
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new stretch
+    </h2>
+
+    <form action="/insert_stretch" method="post">
+      <div>
+        <label for="stretch_name_box">
+          Stretch name
+        </label>
+
+        <input type="text" id="stretch_name_box" name="query_stretch_name">
+      </div>
+
+      <div>
+        <label for="body_part_id_box">
+          Body part
+        </label>
+
+        <input type="text" id="body_part_id_box" name="query_body_part_id">
+      </div>
+
+      <button>
+        Create stretch
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table border="1">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Stretch name
+        </th>
+
+        <th>
+          Body part
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_stretches.each do |a_stretch| %>
+      <tr>
+        <td>
+          <%= a_stretch.id %>
+        </td>
+
+        <td>
+          <%= a_stretch.stretch_name %>
+        </td>
+
+        <td>
+          <%= a_stretch.body_part_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_stretch.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_stretch.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/stretches/<%= a_stretch.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>
